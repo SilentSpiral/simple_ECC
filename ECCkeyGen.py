@@ -15,13 +15,13 @@ def modinv(a, m):
 		return x % m
 
 def PointAdd(a,p,A,B):
-	if A[0]==None:
+	if A[0]==-1:
 		return B
-	if B[0]==None:
+	if B[0]==-1:
 		return A
 	if A[0]==B[0]:
 		if A[1]!=B[1]:
-			return(None,None)
+			return(-1,-1)
 		else:
 			lam=(((3*(A[0]**2)+a)%p)* modinv(2*A[1], p))%p
 	else:
@@ -31,7 +31,7 @@ def PointAdd(a,p,A,B):
 	return (x3,y3)
 	
 def MultipyPoint(n,A,a,p):   #借鉴了模重复平方计算法
-	D=(None,None)
+	D=(-1,-1)
 	E=bin(n)[2:]
 	for i in range(len(E)):
 		D=PointAdd(a,p,D,D)
